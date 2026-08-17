@@ -1,65 +1,116 @@
 # Childhood AI Avatar Skill
 
-一个面向 Codex 的童年头像生图与风格复刻 skill。它根据用户提供的身份照片生成单张、四张或九张一致头像，并可附加 2×2 / 3×3 合集。
+把一张童年 / 婴幼儿照片转换成 **9 张高一致性白底萌娃头像 + 3×3 九宫格合集** 的可复用 Agent Skill。
 
-## 这版解决了什么
+核心设计原则：
 
-- 明确区分**身份参考图**与**风格参考图**，禁止示例图“带偏脸”
-- 九张图逐张生成、逐张质检，降低九宫格一次生成造成的身份漂移
-- 支持“同风格九表情”和“同构图九风格”两种模式
-- 内置九种风格配方：棚拍、毛绒、黏土、动漫、水彩、复古儿童照、贴纸、盲盒、剪纸
-- 用 5 分质量门槛检查身份、套图一致性、变体清晰度与技术瑕疵
-- 九宫格只排版已通过质检的单图，不重新生成面孔
-- 对儿童形象强制使用适龄服装、姿势和道具
+> **用户原图决定“这个人是谁”，风格参考图只决定“做成什么样”。**
 
-## 仓库结构
+## ✨ Features
+
+- 基于用户童年照保持人物身份一致性
+- 默认生成 9 张独立 1:1 头像
+- 自动生成 3×3 九宫格合集
+- 内置 9 种表情 / 轻特效
+- 支持半写实、毛绒、黏土、动漫、水彩、复古、贴纸、盲盒等扩展风格
+- 强化“原图身份优先”，降低不同生成结果之间的漂脸问题
+- 适合 ChatGPT、Codex、Claude Code、Gemini CLI、Cursor 等 Skill / Agent 工作流
+
+## 🎭 Default 9 Effects
+
+1. 嘟嘴 Pout
+2. 侧目 + 墨镜 Side Glance + Sunglasses
+3. 眨眼 + 粉色泡泡 Wink + Bubble Gum
+4. 侧目露齿笑 Side Smile
+5. 惊讶 O 嘴 Surprised O-face
+6. 眯眼大笑 Squinty Laugh
+7. 红晕 + 小爱心 Blush + Heart
+8. 小皇冠 / 生日帽 Tiny Crown / Party Accent
+9. 天使感柔笑 Soft Angelic Smile
+
+## 📁 Project Structure
 
 ```text
-skills/childhood-ai-avatar/
+childhood-ai-avatar-skill/
 ├── SKILL.md
-├── agents/openai.yaml
-└── references/
-    ├── set-recipes.md
-    └── style-recipes.md
-
-tests/
 ├── README.md
-└── cases.yaml
+├── LICENSE
+├── examples/
+│   └── README.md
+└── tests/
+    ├── README.md
+    └── cases.yaml
 ```
 
-## 安装
+## 🚀 Usage
 
-下载[仓库 ZIP](https://github.com/KenView/childhood-ai-avatar-skill/archive/refs/heads/main.zip)，或使用 Git 克隆：
+下载[仓库 ZIP](https://github.com/KenView/childhood-ai-avatar-skill/archive/refs/heads/main.zip)，或克隆仓库后，把整个目录放入 Agent Skills 目录并命名为 `childhood-ai-avatar-v2`：
 
 ```powershell
 git clone https://github.com/KenView/childhood-ai-avatar-skill.git
-cd childhood-ai-avatar-skill
+Copy-Item -Recurse -Force .\childhood-ai-avatar-skill "$env:USERPROFILE\.codex\skills\childhood-ai-avatar-v2"
 ```
 
-将 `skills/childhood-ai-avatar` 复制到 Codex skills 目录：
-
-```powershell
-Copy-Item -Recurse -Force .\skills\childhood-ai-avatar "$env:USERPROFILE\.codex\skills\childhood-ai-avatar"
-```
-
-重新打开相关 Codex 任务后即可使用。
-
-## 测试
-
-仓库提供 12 个可复用行为测试，覆盖正常生成、身份隔离、低清输入、缺失输入、九宫格排版和儿童安全边界。执行方法见 [`tests/README.md`](tests/README.md)，机器可读测试定义见 [`tests/cases.yaml`](tests/cases.yaml)。测试不附带真人照片，请使用已获同意的照片或合成身份图。
-
-## 调用示例
+重新打开相关任务后，可以直接使用类似指令：
 
 ```text
-使用 $childhood-ai-avatar，根据我上传的童年照片生成九张白底半写实头像，
-分别使用不同表情，再额外做一张 3×3 九宫格合集。
+根据我上传的童年照片，使用 $childhood-ai-avatar-v2，
+生成 9 张白底单独头像，再生成一张 3×3 九宫格合集。
 ```
+
+或者：
 
 ```text
-使用 $childhood-ai-avatar，把我的童年照片做成九种风格对比；
-示例图只参考风格，不要参考示例人物的脸。
+注意，以我上传的童年照片作为人物身份主参考，
+使用 $childhood-ai-avatar-v2 做一套九宫格。
 ```
 
-## 许可
+如果想做其他风格：
 
-[MIT License](LICENSE)
+```text
+使用 $childhood-ai-avatar-v2，
+根据我的童年照片生成 9 张黏土手办风头像，并制作九宫格。
+```
+
+## 🧠 Identity Preservation
+
+本 Skill 特别区分两种参考：
+
+- **Identity Reference**：用户上传的童年照片，决定人物五官、脸型、发型、年龄感等。
+- **Style Reference**：案例图 / 抖音截图 / 风格图，只决定构图、表情、配饰、质感与光线。
+
+核心约束：
+
+```text
+The user's uploaded childhood photo is the PRIMARY identity reference.
+The reference photo determines WHO the child is.
+Other images determine STYLE / EXPRESSION / LAYOUT only.
+Identity preservation has higher priority than beautification.
+```
+
+## 🎨 Extendable Styles
+
+- White Studio / 半写实白底
+- 3D Plush / 毛绒公仔
+- Clay Figure / 黏土手办
+- Anime / 日系动漫
+- Watercolor / 绘本水彩
+- Retro Childhood Photo / 复古儿童照
+- Sticker / 透明背景贴纸
+- Cartoon / 卡通滤镜
+- Blind-box Figure / 盲盒手办
+- Pencil Sketch / 素描线稿
+- Creamy Portrait / 奶油柔光写真
+
+详细规则与 Prompt 模板请查看 [`SKILL.md`](./SKILL.md)。
+
+## ⚠️ Notes
+
+- 生成式模型无法保证像传统人脸识别一样的 100% 身份锁定。
+- 原始照片越清晰，人物一致性通常越好。
+- 强艺术化风格可能降低与原照片的相似度，因此建议先生成半写实高保真版本，再扩展风格。
+- 不建议使用其他人物照片作为强风格参考，以免发生身份漂移。
+
+## 📄 License
+
+MIT License.

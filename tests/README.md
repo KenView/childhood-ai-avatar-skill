@@ -1,6 +1,6 @@
 # Behavioral test samples
 
-这些测试用于验证 `childhood-ai-avatar` skill 的决策、工具调用和交付行为。图像模型具有随机性，因此测试关注可观察的流程约束与最低质量门槛，而不是逐像素一致。
+这些测试用于验证 `childhood-ai-avatar-v2` skill 的决策、工具调用和交付行为。图像模型具有随机性，因此测试关注可观察的流程约束与最低质量门槛，而不是逐像素一致。
 
 ## 测试素材
 
@@ -16,7 +16,7 @@
 
 ## 执行方法
 
-1. 安装 `skills/childhood-ai-avatar`。
+1. 将仓库目录安装为 `childhood-ai-avatar-v2`。
 2. 打开 [`cases.yaml`](cases.yaml)，逐个执行 `prompt`。
 3. 将 `fixtures` 中的占位符替换为对应测试素材并按标注声明素材角色。
 4. 检查所有 `required_behaviors` 均发生，所有 `forbidden_behaviors` 均未发生。

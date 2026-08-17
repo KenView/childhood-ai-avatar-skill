@@ -1,5 +1,5 @@
 schema_version: 1
-skill: childhood-ai-avatar
+skill: childhood-ai-avatar-v2
 description: Behavioral evaluation cases for identity-preserving childhood avatar generation.
 
 cases:
@@ -7,7 +7,7 @@ cases:
     title: 单张白底棚拍头像
     fixtures: [identity_ref]
     prompt: |-
-      使用 $childhood-ai-avatar，根据 identity_ref 生成一张白底半写实童年头像。
+      使用 $childhood-ai-avatar-v2，根据 identity_ref 生成一张白底半写实童年头像。
       保留人物长相和年龄感，使用柔和棚拍光，不要文字和水印。
     expected_mode: single recreation
     required_behaviors:
