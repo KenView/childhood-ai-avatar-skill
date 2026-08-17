@@ -1,0 +1,4 @@
+interface:
+  display_name: "童年头像工作室"
+  short_description: "基于用户照片生成身份一致的四宫格、九宫格童年头像套图"
+  default_prompt: "Use $childhood-ai-avatar to turn my childhood photo into nine consistent white-background avatar portraits."
