@@ -1,5 +1,7 @@
 # Examples
 
+可直接查看包含公开可再分发历史照片与生成结果的 [`demos/`](demos/README.md) 图库。
+
 推荐的标准输出顺序：
 
 ```text

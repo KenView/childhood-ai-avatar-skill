@@ -88,6 +88,18 @@ Other images determine STYLE / EXPRESSION / LAYOUT only.
 Identity preservation has higher priority than beautification.
 ```
 
+## 🖼️ Demo Gallery
+
+仓库包含 3 组可直接浏览和下载的公开 Demo，覆盖历史婴儿照片、复杂旧底片和低分辨率输入。所有输入素材均附来源与许可说明，未使用用户上传的私人照片。
+
+| 历史输入 | 生成结果 |
+| --- | --- |
+| ![1880 seated baby source](examples/demos/01-seated-baby-1880/source.jpg) | ![1880 seated baby generated 3x3 demo](examples/demos/01-seated-baby-1880/output_3x3.png) |
+| ![NGA child source](examples/demos/02-nga-child-1850/source.jpg) | ![NGA child generated 3x3 demo](examples/demos/02-nga-child-1850/output_3x3.png) |
+| ![University of Washington child source](examples/demos/03-uw-child-1860s/source.jpg) | ![University of Washington child generated 3x3 demo](examples/demos/03-uw-child-1860s/output_3x3.png) |
+
+完整来源、权利状态和低清输入限制见 [`examples/demos/README.md`](examples/demos/README.md)。
+
 ## 🎨 Extendable Styles
 
 - White Studio / 半写实白底
