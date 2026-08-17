@@ -21,9 +21,20 @@ skills/childhood-ai-avatar/
 └── references/
     ├── set-recipes.md
     └── style-recipes.md
+
+tests/
+├── README.md
+└── cases.yaml
 ```
 
 ## 安装
+
+下载[仓库 ZIP](https://github.com/KenView/childhood-ai-avatar-skill/archive/refs/heads/main.zip)，或使用 Git 克隆：
+
+```powershell
+git clone https://github.com/KenView/childhood-ai-avatar-skill.git
+cd childhood-ai-avatar-skill
+```
 
 将 `skills/childhood-ai-avatar` 复制到 Codex skills 目录：
 
@@ -32,6 +43,10 @@ Copy-Item -Recurse -Force .\skills\childhood-ai-avatar "$env:USERPROFILE\.codex\
 ```
 
 重新打开相关 Codex 任务后即可使用。
+
+## 测试
+
+仓库提供 12 个可复用行为测试，覆盖正常生成、身份隔离、低清输入、缺失输入、九宫格排版和儿童安全边界。执行方法见 [`tests/README.md`](tests/README.md)，机器可读测试定义见 [`tests/cases.yaml`](tests/cases.yaml)。测试不附带真人照片，请使用已获同意的照片或合成身份图。
 
 ## 调用示例
 
