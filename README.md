@@ -88,6 +88,18 @@ Other images determine STYLE / EXPRESSION / LAYOUT only.
 Identity preservation has higher priority than beautification.
 ```
 
+## 🖼️ Demo Gallery
+
+仓库包含 3 组可直接浏览和下载的现代公开 Demo，输入照片分别发布于 2022、2024 和 2025 年。所有输入素材均来自允许再利用和修改的图库页面，附来源与许可说明，未使用用户上传的私人照片。
+
+| 现代输入 | 生成结果 |
+| --- | --- |
+| ![2022 Unsplash smiling boy source](examples/demos/01-unsplash-smiling-boy-2022/source.jpg) | ![2022 smiling boy generated 3x3 demo](examples/demos/01-unsplash-smiling-boy-2022/output_3x3.png) |
+| ![2024 Pexels studio girl source](examples/demos/02-pexels-studio-girl-2024/source.jpg) | ![2024 studio girl generated 3x3 demo](examples/demos/02-pexels-studio-girl-2024/output_3x3.png) |
+| ![2025 Pexels Tehran toddler source](examples/demos/03-pexels-tehran-toddler-2025/source.jpg) | ![2025 Tehran toddler generated 3x3 demo](examples/demos/03-pexels-tehran-toddler-2025/output_3x3.png) |
+
+完整来源、发布日期和许可说明见 [`examples/demos/README.md`](examples/demos/README.md)。
+
 ## 🎨 Extendable Styles
 
 - White Studio / 半写实白底
